@@ -221,10 +221,6 @@
   opacity: 0.7;
 }
 
-.code-terminal-copy[data-copied='true'] .code-terminal-copy-text::after {
-  content: 'IED';
-}
-
 .code-terminal-body {
   display: block;
   padding: 2px 4px;

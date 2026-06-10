@@ -90,10 +90,15 @@ if (codeContent) {
 document.querySelectorAll('.code-terminal-copy').forEach((btn) => {
   btn.addEventListener('click', async () => {
     const text = btn.getAttribute('data-copy') || '';
+    const label = btn.querySelector('.code-terminal-copy-text');
     try {
       await navigator.clipboard.writeText(text);
       btn.setAttribute('data-copied', 'true');
-      setTimeout(() => btn.removeAttribute('data-copied'), 1400);
+      if (label) label.textContent = 'DONE';
+      setTimeout(() => {
+        btn.removeAttribute('data-copied');
+        if (label) label.textContent = 'COPY';
+      }, 1400);
     } catch (_) {
       // clipboard blocked — fall back silently
     }
