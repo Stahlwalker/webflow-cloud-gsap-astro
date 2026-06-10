@@ -5,13 +5,64 @@ const gallery = [
   { src: '/images/webflow_keyboard.webp', alt: 'The Webflow keyboard' },
   { src: '/images/keyboard2.webp', alt: 'The Webflow keyboard, second angle' },
 ];
+
+// Highlighted snippet of Prizes.js — the keyboard float, tilt, and count-up.
+// Kept as a string so curly-brace object literals don't get parsed as JSX.
+const prizeCode = `<span class="c-cm">// The keyboard breathes on its own, follows your cursor in 3D,</span>
+<span class="c-cm">// and the $5,000 counts up the first time it enters view.</span>
+<span class="c-kw">import</span> { gsap, ScrollTrigger } <span class="c-kw">from</span> <span class="c-str">'../../lib/gsap.js'</span>;
+
+<span class="c-cm">// Idle: continuous sine float + slow rotation breath</span>
+gsap.<span class="c-fn">to</span>(heroImg, {
+  y: -<span class="c-num">10</span>, duration: <span class="c-num">2.6</span>, ease: <span class="c-str">'sine.inOut'</span>, repeat: -<span class="c-num">1</span>, yoyo: <span class="c-kw">true</span>,
+});
+gsap.<span class="c-fn">to</span>(heroGlow, {
+  scale: <span class="c-num">1.08</span>, opacity: <span class="c-num">0.85</span>, repeat: -<span class="c-num">1</span>, yoyo: <span class="c-kw">true</span>,
+  duration: <span class="c-num">2.6</span>, ease: <span class="c-str">'sine.inOut'</span>,
+});
+
+<span class="c-cm">// Hover: track the cursor, tilt the keyboard in 3D space</span>
+figureBtn.<span class="c-fn">addEventListener</span>(<span class="c-str">'mousemove'</span>, (e) =&gt; {
+  <span class="c-kw">const</span> rect = figureBtn.<span class="c-fn">getBoundingClientRect</span>();
+  <span class="c-kw">const</span> px = (e.clientX - rect.left) / rect.width  - <span class="c-num">0.5</span>;
+  <span class="c-kw">const</span> py = (e.clientY - rect.top)  / rect.height - <span class="c-num">0.5</span>;
+  gsap.<span class="c-fn">to</span>(heroImg, {
+    rotationY: px * <span class="c-num">10</span>, rotationX: -py * <span class="c-num">8</span>, scale: <span class="c-num">1.03</span>,
+    duration: <span class="c-num">0.5</span>, ease: <span class="c-str">'power3.out'</span>,
+  });
+});
+
+<span class="c-cm">// Count-up: $0 → $5,000 with green flash + scale punch when it lands</span>
+ScrollTrigger.<span class="c-fn">create</span>({ trigger: <span class="c-str">'.prize-grand'</span>, start: <span class="c-str">'top 85%'</span>, once: <span class="c-kw">true</span>,
+  onEnter: () =&gt; gsap.<span class="c-fn">to</span>(state, {
+    val: <span class="c-num">5000</span>, duration: <span class="c-num">1.2</span>, ease: <span class="c-str">'power2.out'</span>,
+    onUpdate: () =&gt; grandAmount.textContent = <span class="c-str">'$'</span> + format(state.val),
+  }),
+});`;
 ---
 
 <section id="prizes" class="section prizes">
   <div class="container">
     <header class="prizes-head">
-      <span class="eyebrow">The Prizes</span>
-      <h2 class="section-title">Three winners. One grand prize.</h2>
+      <div class="prizes-head-row">
+        <div class="prizes-head-text">
+          <span class="eyebrow">The Prizes</span>
+          <h2 class="section-title">Three winners. One grand prize.</h2>
+        </div>
+        <button
+          class="code-reveal-btn"
+          type="button"
+          aria-expanded="false"
+          aria-controls="prizes-code-panel"
+          data-prizes-toggle
+        >
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="16 18 22 12 16 6"/>
+            <polyline points="8 6 2 12 8 18"/>
+          </svg>
+          <span data-prizes-toggle-text>See the code</span>
+        </button>
+      </div>
       <p class="section-lede">
         The top submission takes home <strong>$5,000</strong>. All three winners get the keyboard and a stack of GSAP swag.
       </p>
@@ -64,6 +115,23 @@ const gallery = [
         </div>
       </div>
     </article>
+
+    <div class="code-reveal-panel" id="prizes-code-panel" data-prizes-code hidden>
+      <div class="code-reveal-bar">
+        <span class="code-reveal-bar-label">
+          <span class="code-reveal-bullet" aria-hidden="true"></span>
+          <code>src/components/Prizes/Prizes.js</code>
+        </span>
+        <button class="code-reveal-replay" type="button" data-prizes-replay>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="1 4 1 10 7 10"/>
+            <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/>
+          </svg>
+          Replay
+        </button>
+      </div>
+      <pre class="code-reveal-code"><code set:html={prizeCode}></code></pre>
+    </div>
   </div>
 
   <div

@@ -3,8 +3,29 @@
 }
 
 .tools-head {
-  max-width: 760px;
   margin-bottom: 56px;
+}
+
+.tools-head-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.tools-head-row .code-reveal-btn {
+  margin-left: auto;
+}
+
+.tools-head-text {
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: 760px;
+}
+
+.tools-head .section-lede {
+  max-width: 760px;
 }
 
 .tools-grid {

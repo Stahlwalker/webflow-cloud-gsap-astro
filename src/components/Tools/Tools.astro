@@ -1,12 +1,60 @@
 ---
 import './Tools.css';
+
+// The actual entrance animation code, with hand-rolled syntax highlighting.
+// Kept in a string so Astro doesn't interpret the {} as JSX expressions.
+const animationCode = `<span class="c-cm">// This is the actual code animating the cards above.</span>
+<span class="c-kw">import</span> { gsap, ScrollTrigger } <span class="c-kw">from</span> <span class="c-str">'../../lib/gsap.js'</span>;
+
+<span class="c-kw">const</span> <span class="c-fn">runEntrance</span> = (card) =&gt; {
+  <span class="c-kw">const</span> strokes = card.<span class="c-fn">querySelectorAll</span>(<span class="c-str">'.tools-stroke'</span>);
+  <span class="c-kw">const</span> dots    = card.<span class="c-fn">querySelectorAll</span>(<span class="c-str">'.tools-dot'</span>);
+  <span class="c-kw">const</span> label   = card.<span class="c-fn">querySelector</span>(<span class="c-str">'.tools-label'</span>);
+
+  <span class="c-cm">// pre-hide each stroke by setting its dash to its full length</span>
+  strokes.<span class="c-fn">forEach</span>((el) =&gt; {
+    <span class="c-kw">const</span> length = el.<span class="c-fn">getTotalLength</span>();
+    gsap.<span class="c-fn">set</span>(el, { strokeDasharray: length, strokeDashoffset: length });
+  });
+  gsap.<span class="c-fn">set</span>(dots,  { scale: <span class="c-num">0</span>, opacity: <span class="c-num">0</span> });
+  gsap.<span class="c-fn">set</span>(label, { opacity: <span class="c-num">0</span>, y: <span class="c-num">4</span> });
+
+  <span class="c-kw">return</span> gsap.<span class="c-fn">timeline</span>({ defaults: { ease: <span class="c-str">'power2.out'</span> } })
+    .<span class="c-fn">from</span>(card,    { opacity: <span class="c-num">0</span>, y: <span class="c-num">24</span>, duration: <span class="c-num">0.6</span> })
+    .<span class="c-fn">to</span>(strokes, { strokeDashoffset: <span class="c-num">0</span>, duration: <span class="c-num">1.1</span>, stagger: <span class="c-num">0.04</span> }, <span class="c-str">'-=0.3'</span>)
+    .<span class="c-fn">to</span>(dots,    { scale: <span class="c-num">1</span>, opacity: <span class="c-num">1</span>, ease: <span class="c-str">'back.out(2)'</span> }, <span class="c-str">'-=0.4'</span>)
+    .<span class="c-fn">to</span>(label,   { opacity: <span class="c-num">1</span>, y: <span class="c-num">0</span> }, <span class="c-str">'-=0.2'</span>);
+};
+
+<span class="c-cm">// Run when each card scrolls into view.</span>
+document.<span class="c-fn">querySelectorAll</span>(<span class="c-str">'.tools-card'</span>).<span class="c-fn">forEach</span>((card) =&gt; {
+  ScrollTrigger.<span class="c-fn">create</span>({ trigger: card, start: <span class="c-str">'top 82%'</span>, once: <span class="c-kw">true</span>,
+    onEnter: () =&gt; <span class="c-fn">runEntrance</span>(card) });
+});`;
 ---
 
 <section id="tools" class="section tools">
   <div class="container">
     <header class="tools-head">
-      <span class="eyebrow">The Stack</span>
-      <h2 class="section-title">Why this stack?</h2>
+      <div class="tools-head-row">
+        <div class="tools-head-text">
+          <span class="eyebrow">The Stack</span>
+          <h2 class="section-title">Why this stack?</h2>
+        </div>
+        <button
+          class="code-reveal-btn"
+          type="button"
+          aria-expanded="false"
+          aria-controls="tools-code-panel"
+          data-tools-toggle
+        >
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="16 18 22 12 16 6"/>
+            <polyline points="8 6 2 12 8 18"/>
+          </svg>
+          <span data-tools-toggle-text>See the code</span>
+        </button>
+      </div>
       <p class="section-lede">
         This is a CodeTV challenge. Code is the whole point. <strong>Astro</strong> keeps it SSG-first
         with minimal JS overhead, leaving headroom for the actual animation. <strong>GSAP's</strong>
@@ -117,6 +165,23 @@ import './Tools.css';
         </a>
       </li>
     </ul>
+
+    <div class="code-reveal-panel" id="tools-code-panel" data-tools-code hidden>
+      <div class="code-reveal-bar">
+        <span class="code-reveal-bar-label">
+          <span class="code-reveal-bullet" aria-hidden="true"></span>
+          <code>src/components/Tools/Tools.js</code>
+        </span>
+        <button class="code-reveal-replay" type="button" data-tools-replay>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="1 4 1 10 7 10"/>
+            <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/>
+          </svg>
+          Replay
+        </button>
+      </div>
+      <pre class="code-reveal-code"><code set:html={animationCode}></code></pre>
+    </div>
   </div>
 </section>
 

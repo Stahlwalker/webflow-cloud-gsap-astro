@@ -29,44 +29,54 @@ gsap.from('.prize-loot li', {
 
 // Animated winner count
 const countNum = document.querySelector('.prize-count-num');
-if (countNum) {
+const formatter = new Intl.NumberFormat('en-US');
+
+function runWinnerCount() {
+  if (!countNum) return;
   const state = { val: 0 };
+  countNum.textContent = '× 00';
+  gsap.to(state, {
+    val: 3,
+    duration: 0.7,
+    ease: 'power2.out',
+    onUpdate: () => {
+      countNum.textContent = '× ' + String(Math.round(state.val)).padStart(2, '0');
+    },
+  });
+}
+
+if (countNum) {
   ScrollTrigger.create({
     trigger: '.prize-count',
     start: 'top 90%',
     once: true,
-    onEnter: () => {
-      gsap.to(state, {
-        val: 3,
-        duration: 0.7,
-        ease: 'power2.out',
-        onUpdate: () => {
-          countNum.textContent = '× ' + String(Math.round(state.val)).padStart(2, '0');
-        },
-      });
-    },
+    onEnter: runWinnerCount,
   });
 }
 
 // Grand prize amount counts up to $5,000
 const grandAmount = document.querySelector('.prize-grand-amount');
-if (grandAmount) {
+
+function runGrandCount() {
+  if (!grandAmount) return;
   const state = { val: 0 };
-  const formatter = new Intl.NumberFormat('en-US');
+  grandAmount.textContent = '$0';
+  gsap.to(state, {
+    val: 5000,
+    duration: 1.2,
+    ease: 'power2.out',
+    onUpdate: () => {
+      grandAmount.textContent = '$' + formatter.format(Math.round(state.val));
+    },
+  });
+}
+
+if (grandAmount) {
   ScrollTrigger.create({
     trigger: '.prize-grand',
     start: 'top 85%',
     once: true,
-    onEnter: () => {
-      gsap.to(state, {
-        val: 5000,
-        duration: 1.2,
-        ease: 'power2.out',
-        onUpdate: () => {
-          grandAmount.textContent = '$' + formatter.format(Math.round(state.val));
-        },
-      });
-    },
+    onEnter: runGrandCount,
   });
 }
 
@@ -220,3 +230,55 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'ArrowLeft') show(currentIdx - 1);
   if (e.key === 'ArrowRight') show(currentIdx + 1);
 });
+
+// "See the code" toggle + Replay
+const prizesToggle = document.querySelector('[data-prizes-toggle]');
+const prizesPanel = document.querySelector('[data-prizes-code]');
+const prizesToggleText = document.querySelector('[data-prizes-toggle-text]');
+
+if (prizesToggle && prizesPanel) {
+  let open = false;
+  prizesToggle.addEventListener('click', () => {
+    open = !open;
+    if (open) {
+      prizesPanel.hidden = false;
+      gsap.fromTo(
+        prizesPanel,
+        { height: 0, autoAlpha: 0, y: -8 },
+        { height: 'auto', autoAlpha: 1, y: 0, duration: 0.45, ease: 'power3.out' }
+      );
+      prizesToggle.setAttribute('aria-expanded', 'true');
+      if (prizesToggleText) prizesToggleText.textContent = 'Hide the code';
+    } else {
+      gsap.to(prizesPanel, {
+        height: 0,
+        autoAlpha: 0,
+        y: -8,
+        duration: 0.3,
+        ease: 'power2.in',
+        onComplete: () => {
+          prizesPanel.hidden = true;
+          gsap.set(prizesPanel, { clearProps: 'height,opacity,visibility,transform' });
+        },
+      });
+      prizesToggle.setAttribute('aria-expanded', 'false');
+      if (prizesToggleText) prizesToggleText.textContent = 'See the code';
+    }
+  });
+}
+
+const prizesReplay = document.querySelector('[data-prizes-replay]');
+if (prizesReplay) {
+  prizesReplay.addEventListener('click', () => {
+    runGrandCount();
+    runWinnerCount();
+    // Quick scale punch on the keyboard so something visible happens above the code too
+    if (heroImg) {
+      gsap.fromTo(
+        heroImg,
+        { scale: 0.94 },
+        { scale: 1, duration: 0.6, ease: 'back.out(2.2)', overwrite: 'auto' }
+      );
+    }
+  });
+}

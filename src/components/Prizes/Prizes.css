@@ -3,8 +3,29 @@
 }
 
 .prizes-head {
-  max-width: 640px;
   margin-bottom: 40px;
+}
+
+.prizes-head-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.prizes-head-row .code-reveal-btn {
+  margin-left: auto;
+}
+
+.prizes-head-text {
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: 640px;
+}
+
+.prizes-head .section-lede {
+  max-width: 640px;
 }
 
 .prize-card {
