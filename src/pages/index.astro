@@ -1,0 +1,38 @@
+---
+import '../styles/global.css';
+import Navbar from '../components/Navbar/Navbar.astro';
+import Hero from '../components/Hero/Hero.astro';
+import Challenge from '../components/Challenge/Challenge.astro';
+import Tools from '../components/Tools/Tools.astro';
+import Prizes from '../components/Prizes/Prizes.astro';
+import Resources from '../components/Resources/Resources.astro';
+import FinalCTA from '../components/FinalCTA/FinalCTA.astro';
+import Footer from '../components/Footer/Footer.astro';
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content="The GSAP × Webflow Cloud Challenge. Build with Astro, animate with GSAP, deploy in a click. Three winners take home GSAP swag and a Webflow keyboard." />
+    <meta property="og:title" content="GSAP × Webflow Cloud Challenge" />
+    <meta property="og:description" content="Build with Astro, animate with GSAP, deploy in a click. Three winners take home GSAP swag and a Webflow keyboard." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <title>GSAP × Webflow Cloud Challenge</title>
+  </head>
+  <body>
+    <Navbar />
+    <main>
+      <Hero />
+      <Challenge />
+      <Tools />
+      <Prizes />
+      <Resources />
+      <FinalCTA />
+    </main>
+    <Footer />
+  </body>
+</html>

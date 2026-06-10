@@ -1,0 +1,69 @@
+---
+import './Tools.css';
+
+const tools = [
+  {
+    name: 'Astro',
+    blurb:
+      'A fast, content-first web framework with island architecture. Ship mostly static HTML and hydrate only what needs to move.',
+    href: 'https://astro.build',
+    accent: '#ff5d01',
+    logoText: 'A',
+  },
+  {
+    name: 'GSAP',
+    blurb:
+      'The animation library that powers the web — now 100% free, every plugin included. Timelines, ScrollTrigger, SplitText, Flip and more.',
+    href: 'https://gsap.com',
+    accent: '#88ce02',
+    logoText: 'G',
+  },
+  {
+    name: 'Webflow',
+    blurb:
+      'Design and ship marketing sites visually. Build the shell around your custom app in minutes, not weeks.',
+    href: 'https://webflow.com',
+    accent: '#146ef5',
+    logoText: 'W',
+  },
+  {
+    name: 'Webflow Cloud',
+    blurb:
+      'Deploy full-stack apps on Cloudflare edge infrastructure, mounted onto your Webflow site. One click from GitHub to production.',
+    href: 'https://developers.webflow.com/webflow-cloud/bring-your-own-app',
+    accent: '#9b6cff',
+    logoText: 'C',
+  },
+];
+---
+
+<section id="tools" class="section tools">
+  <div class="container">
+    <header class="tools-head">
+      <span class="eyebrow">The Stack</span>
+      <h2 class="section-title">Four tools. Everything you need.</h2>
+      <p class="section-lede">
+        Use them all, or pick your fights. The judges care about the result, not your dependency tree.
+      </p>
+    </header>
+
+    <ul class="tools-grid">
+      {tools.map((tool) => (
+        <li class="tool-card" style={`--accent:${tool.accent}`}>
+          <a href={tool.href} target="_blank" rel="noreferrer">
+            <div class="tool-logo" aria-hidden="true">{tool.logoText}</div>
+            <h3 class="tool-name">{tool.name}</h3>
+            <p class="tool-blurb">{tool.blurb}</p>
+            <span class="tool-arrow" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8" /></svg>
+            </span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<script>
+  import './Tools.js';
+</script>

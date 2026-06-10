@@ -1,0 +1,64 @@
+---
+import './Resources.css';
+
+const resources = [
+  {
+    label: 'Starter template',
+    href: 'https://github.com/webflow-examples/astro-gsap',
+    desc: 'Astro + every GSAP plugin, ready to clone.',
+    tag: 'github',
+  },
+  {
+    label: 'GSAP docs & cheatsheet',
+    href: 'https://gsap.com/cheatsheet/',
+    desc: 'The complete API in one scrollable page.',
+    tag: 'gsap',
+  },
+  {
+    label: 'Astro docs',
+    href: 'https://docs.astro.build',
+    desc: 'Routing, layouts, content, and integrations.',
+    tag: 'astro',
+  },
+  {
+    label: 'Webflow Cloud — Bring your own app',
+    href: 'https://developers.webflow.com/webflow-cloud/bring-your-own-app',
+    desc: 'How mounts, environments, and deploys work.',
+    tag: 'webflow',
+  },
+  {
+    label: 'CodeTV: Webflow Challenges',
+    href: 'https://codetv.dev/series/webflow-challenges',
+    desc: 'Episodes, judges, submission deadlines.',
+    tag: 'codetv',
+  },
+  {
+    label: 'GSAP Forums',
+    href: 'https://gsap.com/community/forums/',
+    desc: 'Stuck? The community answers fast.',
+    tag: 'help',
+  },
+];
+---
+
+<section id="resources" class="section resources">
+  <div class="container">
+    <header class="resources-head">
+      <span class="eyebrow">Resources & Links</span>
+      <h2 class="section-title">Everything you'll reach for.</h2>
+    </header>
+
+    <ul class="resources-grid">
+      {resources.map((r) => (
+        <li>
+          <a class="resource-card" href={r.href} target="_blank" rel="noreferrer">
+            <span class="resource-tag">{r.tag}</span>
+            <span class="resource-label">{r.label}</span>
+            <span class="resource-desc">{r.desc}</span>
+            <span class="resource-arrow" aria-hidden="true">→</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

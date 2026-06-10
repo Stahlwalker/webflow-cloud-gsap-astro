@@ -1,0 +1,104 @@
+.final-cta {
+  border-top: 1px solid var(--color-border);
+}
+
+.final-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.cta-card {
+  position: relative;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  padding: 36px 32px 32px;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.cta-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.cta-gsap {
+  color: var(--color-text);
+}
+.cta-gsap::after {
+  background: radial-gradient(520px 280px at 100% 0%, rgba(136, 206, 2, 0.18), transparent 65%);
+}
+
+.cta-deploy::after {
+  background: radial-gradient(520px 280px at 0% 100%, rgba(20, 110, 245, 0.22), transparent 65%);
+}
+
+.cta-mark {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 22px;
+  color: var(--color-accent);
+  border: 1px solid color-mix(in srgb, var(--color-accent) 35%, transparent);
+  background: color-mix(in srgb, var(--color-accent) 14%, transparent);
+}
+
+.cta-mark-blue {
+  color: var(--color-webflow);
+  border-color: color-mix(in srgb, var(--color-webflow) 35%, transparent);
+  background: color-mix(in srgb, var(--color-webflow) 14%, transparent);
+}
+
+.cta-card h3 {
+  font-size: clamp(28px, 3.4vw, 38px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+  max-width: 18ch;
+}
+
+.cta-card p {
+  margin-top: 14px;
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--color-text-muted);
+  max-width: 48ch;
+}
+
+.cta-actions {
+  margin-top: 26px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
+.deploy-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.18s ease, filter 0.18s ease;
+}
+
+.deploy-btn:hover {
+  transform: translateY(-1px);
+  filter: drop-shadow(0 6px 20px rgba(20, 110, 245, 0.35));
+}
+
+.deploy-btn img {
+  display: block;
+  height: 40px;
+  width: auto;
+}
+
+@media (max-width: 880px) {
+  .final-grid {
+    grid-template-columns: 1fr;
+  }
+}

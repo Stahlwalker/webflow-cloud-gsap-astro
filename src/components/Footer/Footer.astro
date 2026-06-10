@@ -1,0 +1,25 @@
+---
+import './Footer.css';
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <span class="footer-mark" aria-hidden="true">
+        <span class="dot dot-green"></span>
+        <span class="dot dot-blue"></span>
+      </span>
+      <span>GSAP × Webflow Cloud Challenge</span>
+    </div>
+
+    <nav class="footer-nav" aria-label="Footer">
+      <a href="https://webflow.com" target="_blank" rel="noreferrer">Webflow</a>
+      <a href="https://gsap.com" target="_blank" rel="noreferrer">GSAP</a>
+      <a href="https://astro.build" target="_blank" rel="noreferrer">Astro</a>
+      <a href="https://codetv.dev" target="_blank" rel="noreferrer">CodeTV</a>
+    </nav>
+
+    <p class="footer-meta">© {year} — Powered by Webflow Cloud.</p>
+  </div>
+</footer>

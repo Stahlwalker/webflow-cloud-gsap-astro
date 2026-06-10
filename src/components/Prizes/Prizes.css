@@ -1,0 +1,116 @@
+.prizes {
+  border-top: 1px solid var(--color-border);
+}
+
+.prizes-head {
+  max-width: 720px;
+  margin-bottom: 56px;
+}
+
+.prizes-head em {
+  font-style: normal;
+  color: var(--color-accent);
+}
+
+.prizes-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  counter-reset: prize;
+}
+
+.prize-card {
+  position: relative;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  padding: 28px 26px 26px;
+  overflow: hidden;
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.prize-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(420px 220px at 0% 0%, color-mix(in srgb, var(--prize-color, var(--color-accent)) 22%, transparent), transparent 60%);
+  pointer-events: none;
+}
+
+.prize-1 { --prize-color: var(--color-accent); transform: translateY(-12px); }
+.prize-2 { --prize-color: #c0c0c8; }
+.prize-3 { --prize-color: #cd7f32; }
+
+.prize-card:hover {
+  border-color: rgba(255, 255, 255, 0.18);
+  transform: translateY(-14px);
+}
+
+.prize-2:hover, .prize-3:hover { transform: translateY(-4px); }
+
+.prize-rank {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 22px;
+}
+
+.rank-num {
+  font-family: var(--font-mono);
+  font-size: 56px;
+  line-height: 1;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  color: var(--prize-color);
+}
+
+.rank-label {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text-dim);
+}
+
+.prize-body h3 {
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-bottom: 14px;
+}
+
+.prize-loot {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.prize-loot li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14.5px;
+  color: var(--color-text-muted);
+}
+
+.loot-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--color-border);
+  font-size: 13px;
+}
+
+@media (max-width: 880px) {
+  .prizes-grid {
+    grid-template-columns: 1fr;
+  }
+  .prize-1 { transform: none; }
+}

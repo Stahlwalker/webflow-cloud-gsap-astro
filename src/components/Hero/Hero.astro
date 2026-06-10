@@ -1,0 +1,46 @@
+---
+import './Hero.css';
+---
+
+<section id="top" class="hero">
+  <div class="hero-bg" aria-hidden="true">
+    <div class="orb orb-green"></div>
+    <div class="orb orb-blue"></div>
+    <div class="grid"></div>
+  </div>
+
+  <div class="container hero-inner">
+    <span class="eyebrow hero-eyebrow">A CodeTV × Webflow × GSAP Challenge</span>
+
+    <h1 class="hero-title">
+      <span class="line">Animate the web.</span>
+      <span class="line">Deploy in a click.</span>
+      <span class="line accent">Win the swag.</span>
+    </h1>
+
+    <p class="hero-lede">
+      Build something delightful with <strong>Astro</strong>, <strong>GSAP</strong>, and
+      <strong>Webflow Cloud</strong>. Three winners take home GSAP swag and a Webflow keyboard.
+    </p>
+
+    <div id="register" class="hero-ctas">
+      <a class="btn btn-primary hero-cta-primary" href="https://codetv.dev/series/webflow-challenges" target="_blank" rel="noreferrer">
+        Register for the challenge
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M5 12h14M13 5l7 7-7 7" />
+        </svg>
+      </a>
+      <a class="btn btn-ghost" href="#challenge">Read the brief</a>
+    </div>
+
+    <ul class="hero-meta" aria-label="Challenge facts">
+      <li><span class="k">Stack</span><span class="v">Astro · GSAP · Webflow Cloud</span></li>
+      <li><span class="k">Winners</span><span class="v">3</span></li>
+      <li><span class="k">Prize</span><span class="v">GSAP swag + Webflow keyboard</span></li>
+    </ul>
+  </div>
+</section>
+
+<script>
+  import './Hero.js';
+</script>
