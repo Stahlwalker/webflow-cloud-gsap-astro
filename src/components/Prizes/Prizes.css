@@ -18,6 +18,12 @@
   margin-left: auto;
 }
 
+@media (max-width: 760px) {
+  .prizes-head-row .code-reveal-btn {
+    margin-left: 0;
+  }
+}
+
 .prizes-head-text {
   flex: 1 1 auto;
   min-width: 0;

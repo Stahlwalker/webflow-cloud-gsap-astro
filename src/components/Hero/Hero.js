@@ -19,6 +19,7 @@ function runHeroIntro() {
     duration: 0.9,
     stagger: { each: 0.012, from: 'start' },
   })
+    .set(lines, { overflow: 'visible' })
     .to(
       '.hero-eyebrow',
       { opacity: 1, y: 0, duration: 0.6 },
