@@ -4,6 +4,14 @@ import StatusCallout from '../StatusCallout/StatusCallout.astro';
 
 const videoId = 'p_G66aSHeps';
 const videoTitle = 'GSAP × Webflow Challenge: CodeTV episode';
+
+// Sites the three teams in the episode built.
+// TODO: replace the placeholder URLs as builds go live.
+const teamBuilds = [
+  { name: 'Lunar Landing', href: 'https://lunarland.ing/' },
+  { name: 'World Cup 2026', href: '#' },
+  { name: 'Sell Your Soul', href: '#' },
+];
 ---
 
 <section id="episode" class="section episode">
@@ -18,7 +26,31 @@ const videoTitle = 'GSAP × Webflow Challenge: CodeTV episode';
     </header>
 
     <div class="episode-grid">
-      <StatusCallout />
+      <div class="episode-side">
+        <StatusCallout />
+
+        <aside class="episode-builds" aria-labelledby="episode-builds-label">
+          <span id="episode-builds-label" class="episode-builds-label">Episode builds</span>
+          <ul class="episode-builds-list">
+            {teamBuilds.map((build) => (
+              <li>
+                <a
+                  class={`episode-build${build.href === '#' ? ' is-placeholder' : ''}`}
+                  href={build.href}
+                  target={build.href === '#' ? undefined : '_blank'}
+                  rel={build.href === '#' ? undefined : 'noreferrer'}
+                  aria-disabled={build.href === '#' ? 'true' : undefined}
+                >
+                  <span class="episode-build-name">{build.name}</span>
+                  <svg class="episode-build-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M7 17L17 7M9 7h8v8"/>
+                  </svg>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </aside>
+      </div>
 
       <div class="episode-frame">
         <iframe
