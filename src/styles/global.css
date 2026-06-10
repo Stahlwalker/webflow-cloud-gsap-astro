@@ -82,7 +82,7 @@
   --radius-md: 14px;
   --radius-lg: 22px;
 
-  --container-max: 1200px;
+  --container-max: 1360px;
   --section-pad-y: clamp(72px, 10vw, 140px);
 
   color-scheme: dark;
