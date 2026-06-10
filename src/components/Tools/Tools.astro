@@ -1,69 +1,121 @@
 ---
 import './Tools.css';
-
-const tools = [
-  {
-    name: 'Astro',
-    blurb:
-      'A fast, content-first web framework with island architecture. Ship mostly static HTML and hydrate only what needs to move.',
-    href: 'https://astro.build',
-    accent: '#ff5d01',
-    logoImg: '/brand/logos/astro-icon-light-gradient.svg',
-  },
-  {
-    name: 'GSAP',
-    blurb:
-      'The animation library that powers the web — now 100% free, every plugin included. Timelines, ScrollTrigger, SplitText, Flip and more.',
-    href: 'https://gsap.com',
-    accent: '#88ce02',
-    logoText: 'G',
-  },
-  {
-    name: 'Webflow',
-    blurb:
-      'Design and ship marketing sites visually. Build the shell around your custom app in minutes, not weeks.',
-    href: 'https://webflow.com',
-    accent: '#146ef5',
-    logoImg: '/brand/logos/Mark_Logo_Blue.svg',
-  },
-  {
-    name: 'Webflow Cloud',
-    blurb:
-      'Deploy full-stack apps on edge infrastructure, mounted onto your Webflow site. One click from GitHub to production.',
-    href: 'https://developers.webflow.com/webflow-cloud/bring-your-own-app',
-    accent: '#146ef5',
-    logoImg: '/brand/logos/Mark_Logo_White.svg',
-  },
-];
 ---
 
 <section id="tools" class="section tools">
   <div class="container">
     <header class="tools-head">
       <span class="eyebrow">The Stack</span>
-      <h2 class="section-title">Four tools. Everything you need.</h2>
+      <h2 class="section-title">Why this stack?</h2>
       <p class="section-lede">
-        Use them all, or pick your fights. The judges care about the result, not your dependency tree.
+        This is a CodeTV challenge. Code is the whole point. <strong>Astro</strong> keeps it SSG-first
+        with minimal JS overhead, leaving headroom for the actual animation. <strong>GSAP's</strong>
+        vanilla JS slots into Astro cleanly, with every plugin free. And <strong>Webflow Cloud</strong>
+        handles the deploy in a single click.
       </p>
     </header>
 
     <ul class="tools-grid">
-      {tools.map((tool) => (
-        <li class="tool-card" style={`--accent:${tool.accent}`}>
-          <a href={tool.href} target="_blank" rel="noreferrer">
-            <div class={`tool-logo${tool.logoImg ? ' tool-logo-img' : ''}`} aria-hidden="true">
-              {tool.logoImg
-                ? <img src={tool.logoImg} alt="" width="44" height="44" />
-                : tool.logoText}
-            </div>
-            <h3 class="tool-name">{tool.name}</h3>
-            <p class="tool-blurb">{tool.blurb}</p>
-            <span class="tool-arrow" aria-hidden="true">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8" /></svg>
-            </span>
-          </a>
-        </li>
-      ))}
+      <li class="tools-card" style="--accent: var(--color-webflow)">
+        <a href="https://developers.webflow.com/" target="_blank" rel="noreferrer">
+          <div class="tools-illo" aria-hidden="true">
+            <svg viewBox="0 0 220 160" fill="none">
+              <!-- browser frame (shifted down to make room for cloud) -->
+              <rect class="tools-stroke" x="22" y="48" width="140" height="88" rx="6" stroke="currentColor" stroke-width="1.5" />
+              <line class="tools-stroke" x1="22" y1="64" x2="162" y2="64" stroke="currentColor" stroke-width="1" />
+              <circle class="tools-stroke" cx="32" cy="56" r="1.6" fill="currentColor" />
+              <circle class="tools-stroke" cx="39" cy="56" r="1.6" fill="currentColor" />
+              <circle class="tools-stroke" cx="46" cy="56" r="1.6" fill="currentColor" />
+              <!-- content blocks -->
+              <line class="tools-stroke" x1="34" y1="78" x2="80" y2="78" stroke="currentColor" stroke-width="1.5" />
+              <line class="tools-stroke" x1="34" y1="88" x2="104" y2="88" stroke="currentColor" stroke-width="1" />
+              <line class="tools-stroke" x1="34" y1="98" x2="86" y2="98" stroke="currentColor" stroke-width="1" />
+              <!-- image placeholder -->
+              <rect class="tools-stroke" x="108" y="78" width="44" height="36" stroke="currentColor" stroke-width="1" />
+              <line class="tools-stroke" x1="108" y1="78" x2="152" y2="114" stroke="currentColor" stroke-width="0.6" opacity="0.7" />
+              <line class="tools-stroke" x1="152" y1="78" x2="108" y2="114" stroke="currentColor" stroke-width="0.6" opacity="0.7" />
+              <!-- cloud floating top-right (the "Cloud" side of Webflow Cloud) -->
+              <path class="tools-stroke" d="M 156,40 C 142,40 140,26 152,24 C 152,14 168,12 172,22 C 178,14 194,18 194,28 C 200,28 200,40 192,40 Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" />
+              <!-- dashed deploy connector: site to cloud -->
+              <line class="tools-stroke" x1="170" y1="40" x2="170" y2="48" stroke="var(--accent)" stroke-width="0.7" stroke-dasharray="2 2" opacity="0.85" />
+              <!-- blueprint accent dots -->
+              <circle class="tools-dot" cx="194" cy="28" r="2.6" fill="var(--accent)" />
+              <circle class="tools-dot" cx="162" cy="48" r="2.4" fill="var(--accent)" />
+              <circle class="tools-dot" cx="22" cy="136" r="2.4" fill="var(--accent)" />
+              <!-- dimension label -->
+              <text class="tools-label" x="92" y="152" font-size="7" fill="var(--accent)" text-anchor="middle">SITE · APP</text>
+            </svg>
+          </div>
+          <h3 class="tools-card-title">
+            <img src="/brand/logos/Full_Logo_Blue_White.svg" alt="Webflow" height="28" />
+          </h3>
+          <p class="tools-card-desc">Build a site visually or deploy an app with Cloud.</p>
+        </a>
+      </li>
+
+      <li class="tools-card" style="--accent: var(--gsap-green)">
+        <a href="https://gsap.com/docs/v3/" target="_blank" rel="noreferrer">
+          <div class="tools-illo" aria-hidden="true">
+            <svg viewBox="0 0 220 160" fill="none">
+              <!-- ground baseline -->
+              <line class="tools-stroke" x1="22" y1="124" x2="198" y2="124" stroke="var(--accent)" stroke-width="0.6" stroke-dasharray="3 3" opacity="0.55" />
+              <!-- motion path (the arc the ball travels) -->
+              <path class="tools-stroke" d="M 40 124 Q 110 18 180 124" stroke="currentColor" stroke-width="1.5" stroke-dasharray="3 3" opacity="0.5" />
+              <!-- ghost ball trail (fading into the past) -->
+              <circle class="tools-stroke" cx="58" cy="98" r="5" stroke="currentColor" stroke-width="1" opacity="0.2" />
+              <circle class="tools-stroke" cx="80" cy="72" r="5" stroke="currentColor" stroke-width="1" opacity="0.34" />
+              <circle class="tools-stroke" cx="106" cy="58" r="5" stroke="currentColor" stroke-width="1" opacity="0.5" />
+              <!-- solid ball (current animated position) -->
+              <circle class="tools-stroke" cx="138" cy="68" r="7" stroke="currentColor" stroke-width="2" />
+              <!-- start + end accent dots -->
+              <circle class="tools-dot" cx="40" cy="124" r="2.6" fill="var(--accent)" />
+              <circle class="tools-dot" cx="180" cy="124" r="2.6" fill="var(--accent)" />
+              <!-- label -->
+              <text class="tools-label" x="110" y="146" font-size="7" fill="var(--accent)" text-anchor="middle">TWEEN · 1.2s</text>
+            </svg>
+          </div>
+          <h3 class="tools-card-title">
+            <img src="/brand/logos/gsap-wordmark-green.svg" alt="GSAP" height="24" />
+          </h3>
+          <p class="tools-card-desc">Animate the web. Every plugin, free.</p>
+        </a>
+      </li>
+
+      <li class="tools-card tools-card-astro" style="--accent: #f041ff">
+        <span class="tools-card-glow" aria-hidden="true"></span>
+        <a href="https://docs.astro.build/en/getting-started/" target="_blank" rel="noreferrer">
+          <div class="tools-illo" aria-hidden="true">
+            <svg viewBox="0 0 220 160" fill="none">
+              <!-- code brackets </> -->
+              <polyline class="tools-stroke" points="94,52 70,80 94,108" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" />
+              <line class="tools-stroke" x1="124" y1="48" x2="100" y2="112" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
+              <polyline class="tools-stroke" points="126,52 150,80 126,108" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" />
+              <!-- blueprint dimension lines -->
+              <line class="tools-stroke" x1="58" y1="38" x2="162" y2="38" stroke="var(--accent)" stroke-width="0.6" stroke-dasharray="3 3" opacity="0.7" />
+              <line class="tools-stroke" x1="58" y1="122" x2="162" y2="122" stroke="var(--accent)" stroke-width="0.6" stroke-dasharray="3 3" opacity="0.7" />
+              <line class="tools-stroke" x1="50" y1="48" x2="50" y2="112" stroke="var(--accent)" stroke-width="0.6" stroke-dasharray="3 3" opacity="0.7" />
+              <line class="tools-stroke" x1="170" y1="48" x2="170" y2="112" stroke="var(--accent)" stroke-width="0.6" stroke-dasharray="3 3" opacity="0.7" />
+              <!-- corner tick marks -->
+              <line class="tools-stroke" x1="46" y1="48" x2="54" y2="48" stroke="var(--accent)" stroke-width="0.9" opacity="0.85" />
+              <line class="tools-stroke" x1="46" y1="112" x2="54" y2="112" stroke="var(--accent)" stroke-width="0.9" opacity="0.85" />
+              <line class="tools-stroke" x1="166" y1="48" x2="174" y2="48" stroke="var(--accent)" stroke-width="0.9" opacity="0.85" />
+              <line class="tools-stroke" x1="166" y1="112" x2="174" y2="112" stroke="var(--accent)" stroke-width="0.9" opacity="0.85" />
+              <!-- blueprint dots at bracket vertices -->
+              <circle class="tools-dot" cx="70" cy="80" r="2.6" fill="var(--accent)" />
+              <circle class="tools-dot" cx="150" cy="80" r="2.6" fill="var(--accent)" />
+              <circle class="tools-dot" cx="100" cy="112" r="2.4" fill="var(--accent)" />
+              <circle class="tools-dot" cx="124" cy="48" r="2.4" fill="var(--accent)" />
+              <!-- dimension label -->
+              <text class="tools-label" x="110" y="146" font-size="7" fill="var(--accent)" text-anchor="middle">SSG · 0 KB JS</text>
+            </svg>
+          </div>
+          <h3 class="tools-card-title">
+            <img src="/brand/logos/astro-logo-light-gradient.svg" alt="Astro" height="32" />
+          </h3>
+          <p class="tools-card-desc">SSG-first. Vanilla JS friendly.</p>
+          <span class="tools-card-sponsor">Webflow is a proud sponsor of Astro</span>
+        </a>
+      </li>
     </ul>
   </div>
 </section>

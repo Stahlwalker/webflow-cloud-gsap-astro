@@ -1,0 +1,142 @@
+.status-callout {
+  background: var(--wf-gray-900);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 26px 26px 22px;
+  width: 100%;
+  max-width: 380px;
+  justify-self: end;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.status-rows {
+  margin: 0 0 22px;
+  padding: 0;
+  display: grid;
+  gap: 18px;
+}
+
+.status-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 16px;
+}
+
+.status-row dt {
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-text-dim);
+  font-weight: 500;
+}
+
+.status-row dd {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+}
+
+.status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: var(--gsap-green);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--gsap-green) 60%, transparent);
+}
+
+.status-deadline {
+  font-family: var(--font-mono);
+  letter-spacing: 0.05em;
+}
+
+.status-sponsors {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.status-sponsor {
+  display: block;
+  height: 20px;
+  width: auto;
+}
+
+.status-sponsor-gsap {
+  height: 14px;
+}
+
+.status-sponsor-sep {
+  color: var(--color-text-dim);
+  font-size: 13px;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.status-cta {
+  display: block;
+  width: 100%;
+  padding: 16px 20px;
+  border-radius: var(--radius-md);
+  background: var(--wf-white);
+  color: var(--wf-black);
+  text-align: center;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-size: 14px;
+  transition: transform 0.18s ease, background-color 0.18s ease;
+}
+
+.status-cta:hover {
+  transform: translateY(-1px);
+  background: var(--wf-gray-100);
+}
+
+@media (max-width: 880px) {
+  .status-callout {
+    max-width: none;
+    justify-self: stretch;
+  }
+}
+
+@media (max-width: 420px) {
+  .status-callout {
+    padding: 22px 22px 20px;
+  }
+  .status-rows {
+    gap: 14px;
+  }
+  .status-row {
+    grid-template-columns: 1fr;
+    align-items: start;
+    gap: 6px;
+  }
+  .status-row dd {
+    justify-self: start;
+  }
+  .status-cta {
+    padding: 14px 18px;
+    font-size: 13px;
+  }
+}

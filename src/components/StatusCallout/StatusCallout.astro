@@ -1,0 +1,40 @@
+---
+import './StatusCallout.css';
+
+// TODO: swap with the real Google Form URL when ready
+const submitUrl = 'https://forms.gle/REPLACE_WITH_FORM_ID';
+const status = 'Active';
+const deadline = 'Jul 25';
+---
+
+<aside class="status-callout" aria-labelledby="status-heading">
+  <h2 id="status-heading" class="visually-hidden">Challenge status</h2>
+
+  <dl class="status-rows">
+    <div class="status-row">
+      <dt>Status</dt>
+      <dd>
+        <span class="status-pill">
+          <span class="status-dot" aria-hidden="true"></span>
+          {status}
+        </span>
+      </dd>
+    </div>
+    <div class="status-row">
+      <dt>Deadline</dt>
+      <dd class="status-deadline">{deadline}</dd>
+    </div>
+    <div class="status-row">
+      <dt>Sponsors</dt>
+      <dd class="status-sponsors">
+        <img class="status-sponsor" src="/brand/logos/Full_Logo_White.svg" alt="Webflow" height="20" />
+        <span class="status-sponsor-sep" aria-hidden="true">+</span>
+        <img class="status-sponsor status-sponsor-gsap" src="/brand/logos/gsap-wordmark-cream.svg" alt="GSAP" height="16" />
+      </dd>
+    </div>
+  </dl>
+
+  <a class="status-cta" href={submitUrl} target="_blank" rel="noreferrer">
+    Submit your app
+  </a>
+</aside>

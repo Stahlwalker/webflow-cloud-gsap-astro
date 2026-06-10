@@ -5,9 +5,10 @@ const year = new Date().getFullYear();
 
 <footer class="site-footer">
   <div class="container footer-inner">
-    <div class="footer-brand">
-      <img class="footer-mark" src="/brand/logos/Mark_Logo_White.svg" alt="" aria-hidden="true" width="22" height="22" />
-      <span>GSAP × Webflow Cloud Challenge</span>
+    <div class="footer-brand" aria-label="Webflow × GSAP">
+      <img class="footer-brand-wf" src="/brand/logos/Full_Logo_White.svg" alt="Webflow" height="22" />
+      <span class="footer-brand-x" aria-hidden="true">×</span>
+      <img class="footer-brand-gsap" src="/brand/logos/gsap-wordmark-cream.svg" alt="GSAP" height="18" />
     </div>
 
     <nav class="footer-nav" aria-label="Footer">
@@ -17,6 +18,6 @@ const year = new Date().getFullYear();
       <a href="https://codetv.dev" target="_blank" rel="noreferrer">CodeTV</a>
     </nav>
 
-    <p class="footer-meta">© {year} — Powered by Webflow Cloud.</p>
+    <p class="footer-meta">{year} · Deployed on Webflow Cloud</p>
   </div>
 </footer>

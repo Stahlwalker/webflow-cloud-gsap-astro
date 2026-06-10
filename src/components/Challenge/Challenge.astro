@@ -1,46 +1,100 @@
 ---
 import './Challenge.css';
+
+const deployUrl =
+  'https://webflow.com/dashboard/cloud/deploy?repo=https://github.com/webflow-examples/astro-gsap';
 ---
 
 <section id="challenge" class="section challenge">
   <div class="container">
-    <div class="challenge-grid">
-      <header class="challenge-head">
-        <span class="eyebrow">The Brief</span>
-        <h2 class="section-title">Build a site that <em>moves</em>.</h2>
-      </header>
+    <header class="challenge-head">
+      <span class="eyebrow">The Challenge</span>
+      <h2 class="section-title">Build a site or app that <em>moves</em> you.</h2>
+      <p class="section-lede">
+        Two ways in. Ship an app with <strong>Astro</strong> + <strong>GSAP</strong> on
+        <strong>Webflow Cloud</strong>, or build it visually in <strong>Webflow</strong> with custom
+        HTML, CSS, and JS. Either way: <strong>GSAP</strong> does the motion.
+      </p>
+    </header>
 
-      <div class="challenge-body">
-        <p class="section-lede">
-          Spin up an Astro project, pull in GSAP, and ship something that earns a double-take. From
-          scroll-driven storytelling to playful micro-interactions to full-on canvas demos — if it runs in a
-          browser, it counts. When you're done, hit one button and Webflow Cloud puts it on the internet.
-        </p>
+    <div class="challenge-paths">
+      <article class="challenge-path challenge-path-cloud">
+        <header class="challenge-path-head">
+          <h3 class="challenge-path-title">Ship an App</h3>
+        </header>
 
-        <ul class="challenge-list">
+        <ol class="challenge-list">
           <li>
             <span class="num">01</span>
             <div>
-              <h3>Start from the template</h3>
-              <p>Clone the official <code>astro-gsap</code> starter — Astro + every GSAP plugin pre-registered.</p>
+              <h4>Clone the starter</h4>
+              <p>The official <code>astro-gsap</code> starter ships with Astro and every GSAP plugin pre-wired.</p>
+              <div class="code-terminal" aria-label="Clone the starter repo">
+                <div class="code-terminal-bar">
+                  <span class="code-terminal-label">Code</span>
+                  <button class="code-terminal-copy" type="button" data-copy="git clone https://github.com/Webflow-Examples/astro-gsap.git">
+                    <span class="code-terminal-copy-bracket">[</span>
+                    <span class="code-terminal-copy-text">COPY</span>
+                    <span class="code-terminal-copy-bracket">]</span>
+                  </button>
+                </div>
+                <div class="code-terminal-body">
+                  <span class="code-line">
+                    <span class="code-content"><span class="code-prompt">$</span> git clone https://github.com/Webflow-Examples/astro-gsap.git</span>
+                  </span>
+                </div>
+              </div>
             </div>
           </li>
           <li>
             <span class="num">02</span>
             <div>
-              <h3>Animate something real</h3>
-              <p>One memorable moment beats ten generic fades. Lean into ScrollTrigger, SplitText, Flip, or MotionPath.</p>
+              <h4>Make it your own</h4>
+              <p>Wire up GSAP. Lean into ScrollTrigger, SplitText, Flip, or MotionPath. Every plugin is now free.</p>
             </div>
           </li>
           <li>
             <span class="num">03</span>
             <div>
-              <h3>Deploy to Webflow Cloud</h3>
-              <p>Click the Deploy button, connect your repo, and submit your live URL through CodeTV.</p>
+              <h4>Deploy to Cloud</h4>
+              <p>One click from the dashboard, a live URL in your hands.</p>
+              <a class="challenge-deploy" href={deployUrl} target="_blank" rel="noreferrer" aria-label="Deploy to Webflow Cloud">
+                <img src="https://webflow.com/img/deploy-dark.svg" alt="Deploy to Webflow" width="180" height="40" />
+              </a>
             </div>
           </li>
-        </ul>
-      </div>
+        </ol>
+      </article>
+
+      <article class="challenge-path challenge-path-site">
+        <header class="challenge-path-head">
+          <h3 class="challenge-path-title">Ship a Site</h3>
+        </header>
+
+        <ol class="challenge-list">
+          <li>
+            <span class="num">01</span>
+            <div>
+              <h4>Start with a Webflow site</h4>
+              <p>Lay it out visually. Drop in custom HTML, CSS, and JS wherever you need code to do the work.</p>
+            </div>
+          </li>
+          <li>
+            <span class="num">02</span>
+            <div>
+              <h4>Animate with GSAP</h4>
+              <p>Add the GSAP CDN, then drive the motion from a custom code embed. ScrollTrigger and SplitText all the way.</p>
+            </div>
+          </li>
+          <li>
+            <span class="num">03</span>
+            <div>
+              <h4>Ship it</h4>
+              <p>Publish to your Webflow domain and drop the live URL into the submission form.</p>
+            </div>
+          </li>
+        </ol>
+      </article>
     </div>
   </div>
 </section>

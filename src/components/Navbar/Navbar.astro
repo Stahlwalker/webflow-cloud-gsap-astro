@@ -1,21 +1,58 @@
 ---
 import './Navbar.css';
+
+const submitUrl = 'https://forms.gle/REPLACE_WITH_FORM_ID';
+const navLinks = [
+  { href: '#episode', label: 'Episode' },
+  { href: '#challenge', label: 'Challenge' },
+  { href: '#tools', label: 'Tools' },
+  { href: '#prizes', label: 'Prizes' },
+  { href: '#resources', label: 'Resources' },
+];
 ---
 
 <header class="nav">
   <div class="container nav-inner">
-    <a href="#top" class="nav-brand" aria-label="GSAP × Webflow Cloud Challenge">
-      <img class="nav-brand-mark" src="/brand/logos/Mark_Logo_White.svg" alt="" aria-hidden="true" width="28" height="28" />
-      <span class="nav-brand-text">GSAP <span class="x">×</span> Webflow Cloud</span>
+    <a href="#top" class="nav-brand" aria-label="Webflow × GSAP Challenge">
+      <img class="nav-brand-wf" src="/brand/logos/Full_Logo_White.svg" alt="Webflow" height="22" />
+      <span class="nav-brand-x" aria-hidden="true">×</span>
+      <img class="nav-brand-gsap" src="/brand/logos/gsap-wordmark-cream.svg" alt="GSAP" height="18" />
     </a>
 
     <nav class="nav-links" aria-label="Primary">
-      <a href="#challenge">Challenge</a>
-      <a href="#tools">Tools</a>
-      <a href="#prizes">Prizes</a>
-      <a href="#resources">Resources</a>
+      {navLinks.map((link) => (
+        <a href={link.href}>{link.label}</a>
+      ))}
     </nav>
 
-    <a href="#register" class="btn btn-primary nav-cta">Register</a>
+    <a href={submitUrl} target="_blank" rel="noreferrer" class="btn btn-primary nav-cta">Submit</a>
+
+    <button
+      class="nav-toggle"
+      type="button"
+      aria-label="Open menu"
+      aria-expanded="false"
+      aria-controls="nav-mobile"
+      data-nav-toggle
+    >
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+    </button>
+  </div>
+
+  <div class="nav-mobile" id="nav-mobile" data-nav-mobile hidden>
+    <nav class="nav-mobile-links" aria-label="Mobile">
+      {navLinks.map((link) => (
+        <a href={link.href} data-nav-link>{link.label}</a>
+      ))}
+    </nav>
+    <a href={submitUrl} target="_blank" rel="noreferrer" class="btn btn-primary nav-mobile-cta" data-nav-link>
+      Submit your app
+    </a>
   </div>
 </header>
+
+<script>
+  import './Navbar.js';
+</script>

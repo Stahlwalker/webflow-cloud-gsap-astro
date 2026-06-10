@@ -1,32 +1,32 @@
-# GSAP × Webflow Cloud Challenge — Landing Page
+# GSAP × Webflow Cloud Challenge: Landing Page
 
 The marketing site for the [CodeTV](https://codetv.dev) hackathon that Webflow and GSAP are running together. It explains the challenge, the stack, the prizes, and points contestants at the official starter template + the one-click Deploy to Webflow Cloud button.
 
-Built with the exact same toolchain contestants use — **Astro**, **GSAP**, and **Webflow Cloud** — so the page itself is a working demo of the brief.
+Built with the exact same toolchain contestants use (**Astro**, **GSAP**, and **Webflow Cloud**), so the page itself is a working demo of the brief.
 
 ## 🎯 What's on the page
 
-- **Hero** — the elevator pitch + a "Register for the challenge" CTA. Uses GSAP `SplitText` to chunk the headline into characters for a staggered entrance.
-- **Challenge** — the three-step brief (clone the starter → animate something real → deploy).
-- **Tools** — Astro, GSAP, Webflow, and Webflow Cloud, each with a link out.
-- **Prizes** — three winner cards. Each takes home a GSAP swag pack and a Webflow keyboard; first place also gets featured on the CodeTV show.
-- **Resources** — six links: starter repo, GSAP cheatsheet, Astro docs, Webflow Cloud docs, CodeTV series, GSAP forums.
-- **Final CTAs** — side-by-side: "Explore GSAP" and the official "Deploy to Webflow" badge wired up to the [`webflow-examples/astro-gsap`](https://github.com/webflow-examples/astro-gsap) starter.
-- **Navbar + Footer** — Webflow-branded chrome top and bottom.
+- **Hero**: the elevator pitch + a "Register for the challenge" CTA. Uses GSAP `SplitText` to chunk the headline into characters for a staggered entrance.
+- **Challenge**: the three-step brief (clone the starter → animate something real → deploy).
+- **Tools**: Astro, GSAP, Webflow, and Webflow Cloud, each with a link out.
+- **Prizes**: three winner cards. Each takes home a GSAP swag pack and a Webflow keyboard; first place also gets featured on the CodeTV show.
+- **Resources**: six links: starter repo, GSAP cheatsheet, Astro docs, Webflow Cloud docs, CodeTV series, GSAP forums.
+- **Final CTAs**: side-by-side "Explore GSAP" and the official "Deploy to Webflow" badge wired up to the [`webflow-examples/astro-gsap`](https://github.com/webflow-examples/astro-gsap) starter.
+- **Navbar + Footer**: Webflow-branded chrome top and bottom.
 
 ## 🧱 Stack
 
 | Layer       | Choice                                                                 |
 | :---------- | :--------------------------------------------------------------------- |
 | Framework   | [Astro 5](https://astro.build) (static output, zero JS by default)     |
-| Animation   | [GSAP 3.15](https://gsap.com) — all plugins free, including SplitText  |
+| Animation   | [GSAP 3.15](https://gsap.com), all plugins free, including SplitText   |
 | Hosting     | [Webflow Cloud](https://developers.webflow.com/webflow-cloud) (static) |
 
 There's no Cloudflare adapter, no `wrangler.json`, no Node.js runtime. Webflow Cloud picks up the static build via `webflow.json`.
 
 ## 📁 Project structure
 
-The structure intentionally mirrors the [contestant starter template](https://github.com/webflow-examples/astro-gsap) — central GSAP entry, one folder per component with matching `.astro` / `.css` / `.js`.
+The structure intentionally mirrors the [contestant starter template](https://github.com/webflow-examples/astro-gsap): a central GSAP entry, one folder per component with matching `.astro` / `.css` / `.js`.
 
 ```text
 .
@@ -68,7 +68,7 @@ import './Hero.css';
 
 ## 🎬 GSAP usage
 
-All plugin registration lives in [`src/lib/gsap.js`](src/lib/gsap.js). Right now this page imports `gsap`, `ScrollTrigger`, and `SplitText` — add more plugins there as you need them.
+All plugin registration lives in [`src/lib/gsap.js`](src/lib/gsap.js). Right now this page imports `gsap`, `ScrollTrigger`, and `SplitText`. Add more plugins there as you need them.
 
 Each section's `.js` file imports from that central entry:
 
@@ -102,8 +102,8 @@ This repo is configured to be picked up by Webflow Cloud's Astro framework suppo
 
 ## 🔗 Links
 
-- **Starter for contestants** — [`webflow-examples/astro-gsap`](https://github.com/webflow-examples/astro-gsap)
-- **CodeTV** — [codetv.dev/series/webflow-challenges](https://codetv.dev/series/webflow-challenges)
-- **GSAP** — [gsap.com](https://gsap.com) · [cheatsheet](https://gsap.com/cheatsheet/) · [forums](https://gsap.com/community/forums/)
-- **Astro** — [astro.build](https://astro.build) · [docs](https://docs.astro.build)
-- **Webflow Cloud** — [docs](https://developers.webflow.com/webflow-cloud/bring-your-own-app)
+- **Starter for contestants**: [`webflow-examples/astro-gsap`](https://github.com/webflow-examples/astro-gsap)
+- **CodeTV**: [codetv.dev/series/webflow-challenges](https://codetv.dev/series/webflow-challenges)
+- **GSAP**: [gsap.com](https://gsap.com) · [cheatsheet](https://gsap.com/cheatsheet/) · [forums](https://gsap.com/community/forums/)
+- **Astro**: [astro.build](https://astro.build) · [docs](https://docs.astro.build)
+- **Webflow Cloud**: [docs](https://developers.webflow.com/webflow-cloud/bring-your-own-app)

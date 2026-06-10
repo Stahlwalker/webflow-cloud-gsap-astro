@@ -3,39 +3,85 @@ import './FinalCTA.css';
 
 const deployUrl =
   'https://webflow.com/dashboard/cloud/deploy?repo=https://github.com/webflow-examples/astro-gsap';
+
+// Build a deterministic grid of sparkle dots. Delays use a sine-based pseudo-random
+// so each rebuild looks identical and dots twinkle out of sync with one another.
+const buildDots = (cols, rows, spacing, seed) => {
+  const out = [];
+  for (let r = 0; r < rows; r++) {
+    for (let c = 0; c < cols; c++) {
+      const noise = (Math.sin((r * 7 + c * 11 + seed) * 0.71) + 1) / 2;
+      const delay = (noise * 2.2).toFixed(2);
+      out.push({
+        cx: c * spacing + spacing / 2,
+        cy: r * spacing + spacing / 2,
+        delay,
+      });
+    }
+  }
+  return out;
+};
+
+const SPARKLE_COLS = 28;
+const SPARKLE_ROWS = 18;
+const SPARKLE_SPACING = 20;
+const gsapDots = buildDots(SPARKLE_COLS, SPARKLE_ROWS, SPARKLE_SPACING, 17);
+const wfDots = buildDots(SPARKLE_COLS, SPARKLE_ROWS, SPARKLE_SPACING, 43);
+const SPARKLE_W = SPARKLE_COLS * SPARKLE_SPACING;
+const SPARKLE_H = SPARKLE_ROWS * SPARKLE_SPACING;
 ---
 
 <section class="section final-cta">
   <div class="container">
     <div class="final-grid">
       <article class="cta-card cta-gsap">
+        <svg
+          class="cta-sparkle"
+          viewBox={`0 0 ${SPARKLE_W} ${SPARKLE_H}`}
+          preserveAspectRatio="xMidYMid slice"
+          aria-hidden="true"
+        >
+          {gsapDots.map((d) => (
+            <circle cx={d.cx} cy={d.cy} r="1.4" style={`--d:${d.delay}s`} />
+          ))}
+        </svg>
         <img class="cta-wordmark" src="/brand/logos/gsap-wordmark-green.svg" alt="GSAP" width="160" height="59" />
-        <h3>Learn GSAP, free.</h3>
         <p>
-          Every plugin — including all the formerly Club GSAP ones — is now free for everyone, including
+          Every plugin, including all the formerly Club GSAP ones, is now free for everyone, including
           commercial use. Dig into the docs, examples, and cheatsheet to find your move.
         </p>
         <div class="cta-actions">
-          <a class="btn btn-primary" href="https://gsap.com" target="_blank" rel="noreferrer">
-            Explore GSAP
+          <a class="btn btn-primary" href="https://gsap.com/docs/v3/Installation" target="_blank" rel="noreferrer">
+            Get started
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
           </a>
-          <a class="btn btn-ghost" href="https://gsap.com/cheatsheet/" target="_blank" rel="noreferrer">Cheatsheet</a>
         </div>
       </article>
 
       <article class="cta-card cta-deploy">
+        <svg
+          class="cta-sparkle"
+          viewBox={`0 0 ${SPARKLE_W} ${SPARKLE_H}`}
+          preserveAspectRatio="xMidYMid slice"
+          aria-hidden="true"
+        >
+          {wfDots.map((d) => (
+            <circle cx={d.cx} cy={d.cy} r="1.4" style={`--d:${d.delay}s`} />
+          ))}
+        </svg>
         <img class="cta-wordmark" src="/brand/logos/Full_Logo_Blue_White.svg" alt="Webflow" width="160" height="42" />
-        <h3>Ship it in one click.</h3>
         <p>
           Deploy the starter to Webflow Cloud right from this page. We'll fork the repo into your GitHub,
           mount it on a Webflow site, and hand back a live URL.
         </p>
         <div class="cta-actions">
+          <a class="btn btn-primary" href="https://webflow.com/signup" target="_blank" rel="noreferrer">
+            Start building
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
           <a class="deploy-btn" href={deployUrl} target="_blank" rel="noreferrer" aria-label="Deploy to Webflow">
             <img src="https://webflow.com/img/deploy-dark.svg" alt="Deploy to Webflow" width="180" height="40" />
           </a>
-          <a class="btn btn-ghost" href="https://github.com/webflow-examples/astro-gsap" target="_blank" rel="noreferrer">View on GitHub</a>
         </div>
       </article>
     </div>

@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import Navbar from '../components/Navbar/Navbar.astro';
 import Hero from '../components/Hero/Hero.astro';
+import Episode from '../components/Episode/Episode.astro';
 import Challenge from '../components/Challenge/Challenge.astro';
 import Tools from '../components/Tools/Tools.astro';
 import Prizes from '../components/Prizes/Prizes.astro';
@@ -16,17 +17,18 @@ import Footer from '../components/Footer/Footer.astro';
     <link rel="icon" type="image/svg+xml" href="/brand/logos/Mark_Logo_Blue.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
-    <meta name="description" content="The GSAP × Webflow Cloud Challenge. Build with Astro, animate with GSAP, deploy in a click. Three winners take home GSAP swag and a Webflow keyboard." />
-    <meta property="og:title" content="GSAP × Webflow Cloud Challenge" />
-    <meta property="og:description" content="Build with Astro, animate with GSAP, deploy in a click. Three winners take home GSAP swag and a Webflow keyboard." />
+    <meta name="description" content="The Webflow × GSAP challenge from CodeTV. Build with Astro, animate with GSAP, deploy with Webflow Cloud. Submit your app to win swag + a keyboard." />
+    <meta property="og:title" content="Webflow × GSAP × CodeTV Challenge" />
+    <meta property="og:description" content="The Webflow × GSAP challenge from CodeTV. Build with Astro, animate with GSAP, deploy with Webflow Cloud. Submit your app to win swag + a keyboard." />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
-    <title>GSAP × Webflow Cloud Challenge</title>
+    <title>Webflow × GSAP × CodeTV Challenge</title>
   </head>
   <body>
     <Navbar />
     <main>
       <Hero />
+      <Episode />
       <Challenge />
       <Tools />
       <Prizes />

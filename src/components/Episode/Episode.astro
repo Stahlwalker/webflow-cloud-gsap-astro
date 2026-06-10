@@ -1,0 +1,35 @@
+---
+import './Episode.css';
+import StatusCallout from '../StatusCallout/StatusCallout.astro';
+
+const videoId = 'p_G66aSHeps';
+const videoTitle = 'GSAP × Webflow Challenge: CodeTV episode';
+---
+
+<section id="episode" class="section episode">
+  <div class="container">
+    <header class="episode-head">
+      <span class="eyebrow">Watch the Episode</span>
+      <h2 class="section-title">See how it's done.</h2>
+      <p class="section-lede">
+        Stream the full CodeTV episode for the walkthrough, inspiration, and a look at what the judges
+        will be watching for. Then go build yours.
+      </p>
+    </header>
+
+    <div class="episode-grid">
+      <StatusCallout />
+
+      <div class="episode-frame">
+        <iframe
+          src={`https://www.youtube-nocookie.com/embed/${videoId}?rel=0&modestbranding=1`}
+          title={videoTitle}
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </div>
+  </div>
+</section>
