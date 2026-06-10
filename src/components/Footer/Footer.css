@@ -20,28 +20,10 @@
 }
 
 .footer-mark {
-  position: relative;
-  width: 26px;
-  height: 16px;
-}
-
-.footer-mark .dot {
-  position: absolute;
-  top: 0;
-  width: 16px;
-  height: 16px;
-  border-radius: 999px;
-  mix-blend-mode: screen;
-}
-.footer-mark .dot-green {
-  left: 0;
-  background: var(--color-accent);
-  box-shadow: 0 0 12px rgba(136, 206, 2, 0.6);
-}
-.footer-mark .dot-blue {
-  left: 9px;
-  background: var(--color-webflow);
-  box-shadow: 0 0 12px rgba(20, 110, 245, 0.6);
+  display: block;
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
 }
 
 .footer-nav {

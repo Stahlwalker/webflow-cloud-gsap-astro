@@ -26,30 +26,10 @@
 }
 
 .nav-brand-mark {
-  position: relative;
+  display: block;
   width: 28px;
-  height: 18px;
-}
-
-.nav-brand-mark .dot {
-  position: absolute;
-  top: 0;
-  width: 18px;
-  height: 18px;
-  border-radius: 999px;
-  mix-blend-mode: screen;
-}
-
-.nav-brand-mark .dot-green {
-  left: 0;
-  background: var(--color-accent);
-  box-shadow: 0 0 18px rgba(136, 206, 2, 0.7);
-}
-
-.nav-brand-mark .dot-blue {
-  left: 10px;
-  background: var(--color-webflow);
-  box-shadow: 0 0 18px rgba(20, 110, 245, 0.7);
+  height: 28px;
+  object-fit: contain;
 }
 
 .nav-brand-text .x {

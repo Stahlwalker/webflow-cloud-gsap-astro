@@ -6,8 +6,7 @@
 }
 
 .challenge-head .section-title em {
-  font-style: normal;
-  color: var(--color-accent);
+  font-style: italic;
 }
 
 .challenge-list {
@@ -31,13 +30,13 @@
 
 .challenge-list li:hover {
   border-color: rgba(255, 255, 255, 0.16);
-  background: #1b1b21;
+  background: var(--wf-gray-800);
 }
 
 .challenge-list .num {
   font-family: var(--font-mono);
   font-size: 13px;
-  color: var(--color-accent);
+  color: var(--color-text-dim);
   letter-spacing: 0.04em;
   margin-top: 4px;
 }

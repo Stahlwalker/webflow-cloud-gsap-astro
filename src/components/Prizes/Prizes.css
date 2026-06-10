@@ -4,12 +4,49 @@
 
 .prizes-head {
   max-width: 720px;
-  margin-bottom: 56px;
+  margin-bottom: 40px;
+}
+
+.prize-showcase {
+  position: relative;
+  margin: 0 0 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  isolation: isolate;
+}
+
+.prize-showcase-stage {
+  position: absolute;
+  width: 420px;
+  height: 220px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(60% 70% at 50% 55%, rgba(136, 206, 2, 0.32), transparent 70%);
+  filter: blur(36px);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.prize-showcase-img {
+  width: 100%;
+  max-width: 360px;
+  height: auto;
+  display: block;
+  will-change: transform;
+}
+
+.prize-showcase-caption {
+  margin-top: 14px;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-dim);
 }
 
 .prizes-head em {
-  font-style: normal;
-  color: var(--color-accent);
+  font-style: italic;
 }
 
 .prizes-grid {
@@ -41,8 +78,8 @@
 }
 
 .prize-1 { --prize-color: var(--color-accent); transform: translateY(-12px); }
-.prize-2 { --prize-color: #c0c0c8; }
-.prize-3 { --prize-color: #cd7f32; }
+.prize-2 { --prize-color: var(--color-text); }
+.prize-3 { --prize-color: var(--color-text); }
 
 .prize-card:hover {
   border-color: rgba(255, 255, 255, 0.18);
@@ -64,7 +101,7 @@
   line-height: 1;
   font-weight: 600;
   letter-spacing: -0.04em;
-  color: var(--prize-color);
+  color: var(--color-text);
 }
 
 .rank-label {

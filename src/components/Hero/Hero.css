@@ -14,23 +14,17 @@
 
 .hero-bg .orb {
   position: absolute;
-  width: 540px;
-  height: 540px;
+  width: 620px;
+  height: 620px;
   border-radius: 50%;
-  filter: blur(120px);
+  filter: blur(140px);
   opacity: 0.55;
-}
-
-.hero-bg .orb-green {
-  background: radial-gradient(closest-side, rgba(136, 206, 2, 0.9), transparent 70%);
-  top: -120px;
-  left: -120px;
 }
 
 .hero-bg .orb-blue {
   background: radial-gradient(closest-side, rgba(20, 110, 245, 0.9), transparent 70%);
-  bottom: -160px;
-  right: -120px;
+  top: -160px;
+  right: -160px;
 }
 
 .hero-bg .grid {
@@ -55,11 +49,12 @@
 }
 
 .hero-title {
+  font-family: var(--font-display);
   margin-top: 22px;
   font-size: clamp(48px, 7.4vw, 104px);
   line-height: 0.98;
   letter-spacing: -0.035em;
-  font-weight: 700;
+  font-weight: 600;
   max-width: 16ch;
 }
 
@@ -69,11 +64,7 @@
 }
 
 .hero-title .line.accent {
-  background: linear-gradient(95deg, var(--color-accent), var(--color-webflow) 65%, var(--color-accent));
-  background-size: 200% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: var(--color-text);
 }
 
 .hero-lede {

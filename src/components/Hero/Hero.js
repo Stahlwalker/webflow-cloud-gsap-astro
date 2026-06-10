@@ -39,12 +39,4 @@ function runHeroIntro() {
       { opacity: 1, duration: 0.6 },
       '-=0.3',
     );
-
-  // Subtle gradient sweep on the accent line, looping
-  gsap.to('.hero-title .line.accent', {
-    backgroundPosition: '200% 0%',
-    duration: 6,
-    ease: 'none',
-    repeat: -1,
-  });
 }

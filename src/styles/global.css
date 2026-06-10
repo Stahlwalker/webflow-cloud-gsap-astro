@@ -1,17 +1,81 @@
+/* Webflow Visual Sans — display variants (for headings + large UI) */
+@font-face {
+  font-family: 'WF Visual Sans';
+  src: url('/brand/fonts/TTF/WFVisualSans-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'WF Visual Sans';
+  src: url('/brand/fonts/TTF/WFVisualSans-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'WF Visual Sans';
+  src: url('/brand/fonts/TTF/WFVisualSans-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Webflow Visual Sans Text — text optical sizes (for body + small UI) */
+@font-face {
+  font-family: 'WF Visual Sans Text';
+  src: url('/brand/fonts/TTF/WFVisualSans-RegularText.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'WF Visual Sans Text';
+  src: url('/brand/fonts/TTF/WFVisualSans-SemiBoldText.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
-  --color-bg: #0a0a0b;
-  --color-bg-elev: #111114;
-  --color-surface: #17171b;
+  /* Webflow palette tokens (named for clarity) */
+  --wf-black: #080808;
+  --wf-white: #ffffff;
+  --wf-gray-900: #171717;
+  --wf-gray-800: #222222;
+  --wf-gray-700: #363636;
+  --wf-gray-600: #5a5a5a;
+  --wf-gray-500: #757575;
+  --wf-gray-400: #898989;
+  --wf-gray-300: #ababab;
+  --wf-gray-200: #d8d8d8;
+  --wf-gray-100: #f0f0f0;
+
+  --color-bg: var(--wf-black);
+  --color-bg-elev: var(--wf-gray-900);
+  --color-surface: var(--wf-gray-900);
   --color-border: rgba(255, 255, 255, 0.08);
-  --color-text: #f5f5f7;
-  --color-text-muted: rgba(245, 245, 247, 0.66);
-  --color-text-dim: rgba(245, 245, 247, 0.46);
-  --color-accent: #88ce02;
-  --color-accent-hover: #a3ec1c;
+  --color-text: var(--wf-white);
+  --color-text-muted: rgba(255, 255, 255, 0.66);
+  --color-text-dim: rgba(255, 255, 255, 0.46);
+  /* GSAP brand palette — gradients between these are on-brand */
+  --gsap-green: #0ae448;
+  --gsap-lime: #abff84;
+  --gsap-lavender: #9d95ff;
+  --gsap-cyan: #00bae2;
+  --gsap-orange: #ff8709;
+  --gsap-pink: #fec5fb;
+  --gsap-magenta: #f100cb;
+  --gsap-cream: #fffce1;
+
+  /* Site accents — pulled from brand palettes */
+  --color-accent: var(--gsap-green);
+  --color-accent-hover: #4dff7a;
   --color-webflow: #146ef5;
   --color-webflow-hover: #2a82ff;
 
-  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-sans: 'WF Visual Sans Text', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-display: 'WF Visual Sans', 'WF Visual Sans Text', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   --font-mono: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
 
   --radius-sm: 8px;
@@ -68,7 +132,13 @@ button {
 h1,
 h2,
 h3,
-h4,
+h4 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
 p {
   margin: 0;
 }
@@ -110,10 +180,11 @@ p {
 }
 
 .section-title {
+  font-family: var(--font-display);
   font-size: clamp(36px, 5vw, 64px);
   line-height: 1.04;
-  letter-spacing: -0.02em;
-  font-weight: 700;
+  letter-spacing: -0.025em;
+  font-weight: 600;
   margin-top: 18px;
   max-width: 18ch;
 }
