@@ -1,6 +1,35 @@
 .challenge-head {
-  max-width: 760px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 32px;
   margin-bottom: 56px;
+  flex-wrap: wrap;
+}
+
+.challenge-head-text {
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: 760px;
+}
+
+.challenge-codetv {
+  display: inline-flex;
+  margin-top: 8px;
+  color: #ffffff;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  flex-shrink: 0;
+}
+
+.challenge-codetv:hover {
+  transform: translateY(-1px);
+  opacity: 0.85;
+}
+
+.challenge-codetv svg {
+  display: block;
+  height: 40px;
+  width: auto;
 }
 
 .challenge-head .section-title em {
