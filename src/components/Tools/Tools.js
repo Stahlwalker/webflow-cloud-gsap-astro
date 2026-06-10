@@ -7,6 +7,9 @@ function runEntrance(card, delay = 0) {
   const dots = card.querySelectorAll('.tools-dot');
   const label = card.querySelector('.tools-label');
 
+  // Cancel any in-flight tweens on this card's animatables before replaying.
+  gsap.killTweensOf([card, ...strokes, ...dots, label].filter(Boolean));
+
   strokes.forEach((el) => {
     let length = 0;
     if (typeof el.getTotalLength === 'function') {
@@ -26,14 +29,14 @@ function runEntrance(card, delay = 0) {
 
   gsap.set(dots, { scale: 0, opacity: 0 });
   gsap.set(label, { opacity: 0, y: 4 });
-  gsap.set(card, { opacity: 1, y: 0, clearProps: 'transform' });
+  gsap.set(card, { opacity: 0, y: 24 });
 
   const tl = gsap.timeline({
     delay,
     defaults: { ease: 'power2.out' },
   });
 
-  tl.from(card, { opacity: 0, y: 24, duration: 0.6 })
+  tl.to(card, { opacity: 1, y: 0, duration: 0.6, clearProps: 'transform' })
     .to(
       strokes,
       { strokeDashoffset: 0, duration: 1.1, stagger: 0.04, ease: 'power2.inOut' },
@@ -47,7 +50,7 @@ function runEntrance(card, delay = 0) {
 
 const cards = document.querySelectorAll('.tools-card');
 
-// Pre-hide strokes / dots / label so nothing flashes before its trigger fires.
+// Pre-hide strokes / dots / label / card so nothing flashes before its trigger fires.
 cards.forEach((card) => {
   card.querySelectorAll('.tools-stroke').forEach((el) => {
     let length = 220;
@@ -60,6 +63,7 @@ cards.forEach((card) => {
   });
   gsap.set(card.querySelectorAll('.tools-dot'), { scale: 0, opacity: 0 });
   gsap.set(card.querySelector('.tools-label'), { opacity: 0, y: 4 });
+  gsap.set(card, { opacity: 0, y: 24 });
 
   ScrollTrigger.create({
     trigger: card,
